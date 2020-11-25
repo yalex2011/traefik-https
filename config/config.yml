@@ -1,0 +1,23 @@
+http:
+  routers:
+    traefik:
+      rule: "Host(`traefik.example.com`)"
+      service: "api@internal"
+      tls:
+        domains:
+          - main: "example.com"
+            sans:
+              - "*.example.com"
+          # - main: "pole.example.com"
+          #   sans:
+          #     - "*.pole.example.com"
+
+tls:
+  certificates:
+    - certFile: "/etc/certs/example.crt"
+      keyFile: "/etc/certs/example.key"
+  stores:
+    default:
+      defaultCertificate:
+        certFile: "/etc/certs/example.crt"
+        keyFile: "/etc/certs/example.key"
